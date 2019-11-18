@@ -58,8 +58,8 @@ def newsnr_sgveto_psdvar(snr, bchisq, sgchisq, psd_var_val):
     nsnr = numpy.array(newsnr_sgveto(snr, bchisq, sgchisq), ndmin=1)
     psd_var_val = numpy.array(psd_var_val, ndmin=1)
     # 1.2 is the expected maximum psd_var_val over gaussian noise.
-    lgc = psd_var_val >= 1.2
-    nsnr[lgc] = nsnr[lgc] / numpy.sqrt(psd_var_val[lgc])
+    # lgc = psd_var_val >= 1.2
+    nsnr = nsnr / numpy.sqrt(psd_var_val)
 
     # If snr input is float, return a float. Otherwise return numpy array.
     if hasattr(snr, '__len__'):
