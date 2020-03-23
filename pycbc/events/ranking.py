@@ -88,12 +88,9 @@ def newsnr_sgveto(snr, bchisq, sgchisq):
 def newsnr_sgveto_psdvar(snr, bchisq, sgchisq, psd_var_val):
     """ Combined SNR derived from NewSNR, Sine-Gaussian Chisq and PSD
     variation statistic with a threshold at 1.2"""
-    nsnr = numpy.array(newsnr_sgveto(snr, bchisq, sgchisq), ndmin=1)
+    nsnr = numpy.array(newsnr_sgveto(snr, bchisq / psd_var_val, sgchisq), ndmin=1)
     psd_var_val = numpy.array(psd_var_val, ndmin=1)
-    # 1.2 is the expected maximum psd_var_val over gaussian noise.
-    lgc = psd_var_val >= 1.2
-    nsnr[lgc] = nsnr[lgc] / numpy.sqrt(psd_var_val[lgc])
-
+    nsnr = nsnr / psd_var_val**0.5
     # If snr input is float, return a float. Otherwise return numpy array.
     if hasattr(snr, '__len__'):
         return nsnr
