@@ -1216,6 +1216,7 @@ statistic_dict = {
     'phasetd_new_exp_fit_stat_sgveto': PhaseTDNewExpFitSGStatistic,
     'newsnr_sgveto': NewSNRSGStatistic,
     'newsnr_sgveto_psdvar': NewSNRSGPSDStatistic,
+    'newsnr_sgveto_psdvar_scaled': NewSNRSGPSDScaledStatistic,
     'phasetd_exp_fit_stat_sgveto_psdvar': PhaseTDExpFitSGPSDStatistic,
     'phasetd_exp_fit_stat_sgveto_psdvar_scaled':
         PhaseTDExpFitSGPSDScaledStatistic,
